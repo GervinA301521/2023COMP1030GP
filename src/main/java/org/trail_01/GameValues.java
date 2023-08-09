@@ -2,11 +2,14 @@ package org.trail_01;
 
 import java.util.*;
 
+// Class to manage game values and logic
 public class GameValues {
     private int minNumber, maxNumber, numberOfPlayers, attempts, randomNumber, minAttempts = Integer.MAX_VALUE;
     private String playerName, winnerName;
     InputChecker inputChecker = new InputChecker();
 
+    // Getter methods for retrieving values
+    
     public int getMinNumber() {
         return minNumber;
     }
@@ -26,6 +29,8 @@ public class GameValues {
         return winnerName;
     }
 
+    // Setter methods for setting values
+    
     public void setMinNumber(int minNumber) {
         this.minNumber = minNumber;
     }
@@ -53,6 +58,7 @@ public class GameValues {
         this.minAttempts = minAttempts;
     }
 
+    // Method to validate if the range of numbers is valid
     public boolean numberchecker() {
         boolean return_value = true;
         if (this.minNumber >= this.maxNumber){
@@ -61,10 +67,14 @@ public class GameValues {
         }
         return return_value;
     }
+
+    // Method to input min and max numbers
     public void minnmaxinput(){
         setMinNumber(inputChecker.inputInt("Enter the minimum number: "));
         setMaxNumber(inputChecker.inputInt("Enter the maximum number: "));
     }
+
+    // Method to validate if the number of players is within range
     public boolean intherang(){
         boolean return_value = true;
         if (this.numberOfPlayers <= 0 || this.numberOfPlayers > 3) {
@@ -74,6 +84,7 @@ public class GameValues {
         return return_value;
     }
 
+    // Method to loop through players, generate random numbers, and check guesses
     public void randomloop() {
         for (int i = 1; i <= this.numberOfPlayers; i ++) {
             this.attempts = 0;
@@ -89,6 +100,7 @@ public class GameValues {
         }
     }
 
+    // Method to check player's guess against random number
     public boolean answerchecker(int guessnumber) {
         boolean keepdoing = true;
         if(guessnumber == this.getRandomNumber()) {
